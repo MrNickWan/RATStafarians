@@ -3,7 +3,12 @@ package com.example.android.firebasetest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         // Under activity_main.xml, this a ratListings ListView UI
         ratReportsList = findViewById(R.id.ratListings);
 
+
+
         /*
           Queries the 50 most recent reports and change the limitToLast to change
            how many reports you want. Also, you should set the database to the Firebase using
@@ -63,6 +70,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ratReportsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long rowID) {
+
+                setContentView(R.layout.individual_report);
+
+                RatReport report = (RatReport)adapterView.getItemAtPosition(position);
+                TextView key = findViewById(R.id.key);
+
+                key.setText(report.getUniqueKey());
+
+                TextView date = findViewById(R.id.date);
+                date.setText(report.getCreatedDate());
+
+                String addressValue = report.getIncidentAddress() + ", " + report.getCity() + ", " +
+                        report.getIncidentZip();
+                TextView address = findViewById(R.id.address);
+                address.setText(addressValue);
+
+                TextView locationType = findViewById(R.id.locationType);
+                locationType.setText(report.getLocationType());
+                TextView latitude = findViewById(R.id.lat);
+                latitude.setText(report.getLatitude());
+                TextView longitude = findViewById(R.id.longitude);
+                longitude.setText(report.getLongitude());
+
+            }
+        });
     }
 
 }
