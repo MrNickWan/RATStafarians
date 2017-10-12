@@ -1,0 +1,7 @@
+#Wed Oct 11 21:16:33 EDT 2017
+base.0=/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_900f78bf4624fd68430782bc4c8dbf4dd4d3c044
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9a3f236c811d1cdafc802c3bb54643b3aa385146/classes.dex
+base.1=/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9a3f236c811d1cdafc802c3bb54643b3aa385146
+file.0=/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_900f78bf4624fd68430782bc4c8dbf4dd4d3c044/classes.dex

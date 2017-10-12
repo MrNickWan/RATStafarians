@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/res/merged/debug/raw/rat_sightings.csv",
+        "source": "/home/robert/AndroidStudioProjects/RATStafarians/app/src/main/res/raw/rat_sightings.csv"
+    },
+    {
+        "merged": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\AndroidStudioProjects\\RATStafarians\\app\\build\\intermediates\\res\\merged\\debug\\raw\\rat_sightings.csv",
+        "source": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\AndroidStudioProjects\\RATStafarians\\app\\src\\main\\res\\raw\\rat_sightings.csv"
+    }
+]

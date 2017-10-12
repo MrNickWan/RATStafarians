@@ -1,0 +1,50 @@
+[
+    {
+        "outputFile": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\AndroidStudioProjects\\RATStafarians\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v13\\values-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 58,
+                    "endOffset": 109
+                },
+                "from": {
+                    "file": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\.android\\build-cache\\8912d8253fd3320d86d95bcefe3efde7770e007a\\output\\res\\values-v13\\values-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 58,
+                        "endOffset": 109
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v13/values-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 58,
+                    "endOffset": 109
+                },
+                "from": {
+                    "file": "/home/robert/.android/build-cache/b71877d9aaf23b22a9bf0c8e3b564789ebcc0eca/output/res/values-v13/values-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 58,
+                        "endOffset": 109
+                    }
+                }
+            }
+        ]
+    }
+]

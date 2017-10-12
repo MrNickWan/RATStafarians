@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\AndroidStudioProjects\\RATStafarians\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher_round.png",
+        "source": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\AndroidStudioProjects\\RATStafarians\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\AndroidStudioProjects\\RATStafarians\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
+        "source": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\AndroidStudioProjects\\RATStafarians\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher.png",
+        "source": "/home/robert/AndroidStudioProjects/RATStafarians/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher_round.png",
+        "source": "/home/robert/AndroidStudioProjects/RATStafarians/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "outputFile": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\AndroidStudioProjects\\RATStafarians\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 65,
+                    "endOffset": 116
+                },
+                "from": {
+                    "file": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\.android\\build-cache\\4cc39f90b893fecb54c568108226138d5483a0ae\\output\\res\\values-v16\\values-v16.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 65,
+                        "endOffset": 116
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 121,
+                    "endLine": 6,
+                    "endColumn": 12,
+                    "endOffset": 289
+                },
+                "from": {
+                    "file": "/home/robert/AndroidStudioProjects/RATStafarians/C:\\Users\\iponi\\.android\\build-cache\\8912d8253fd3320d86d95bcefe3efde7770e007a\\output\\res\\values-v16\\values-v16.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 5,
+                        "endColumn": 12,
+                        "endOffset": 223
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 65,
+                    "endOffset": 116
+                },
+                "from": {
+                    "file": "/home/robert/.android/build-cache/b9a60165bdff373a8c664bff8f4049e29ea20f15/output/res/values-v16/values-v16.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 65,
+                        "endOffset": 116
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 121,
+                    "endLine": 6,
+                    "endColumn": 12,
+                    "endOffset": 289
+                },
+                "from": {
+                    "file": "/home/robert/.android/build-cache/b71877d9aaf23b22a9bf0c8e3b564789ebcc0eca/output/res/values-v16/values-v16.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 5,
+                        "endColumn": 12,
+                        "endOffset": 223
+                    }
+                }
+            }
+        ]
+    }
+]
