@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "73549300130",
+    "firebase_url": "https://ratdatabase2340.firebaseio.com",
+    "project_id": "ratdatabase2340",
+    "storage_bucket": "ratdatabase2340.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73549300130:android:d8932f28d4d401c8",
+        "android_client_info": {
+          "package_name": "com.example.android.RATStafarians"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73549300130-fn7eav5kcqjqc3no3amp72k4v5njb1eq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.RATStafarians",
+            "certificate_hash": "04eb35992eddeb76f2a01f999dca97e1d4bbd0d2"
+          }
+        },
+        {
+          "client_id": "73549300130-30a8bnlcpbts9fc0sl1puhpn1pnv6mct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR48BvFhFG_ecOZYkYrpIkTT_2fyKfM2Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73549300130-30a8bnlcpbts9fc0sl1puhpn1pnv6mct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
