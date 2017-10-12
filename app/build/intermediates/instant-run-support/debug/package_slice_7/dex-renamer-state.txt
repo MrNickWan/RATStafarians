@@ -1,4 +1,0 @@
-#Wed Oct 11 21:16:33 EDT 2017
-base.0=/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7
-renamed.0=classes.dex
-file.0=/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex
