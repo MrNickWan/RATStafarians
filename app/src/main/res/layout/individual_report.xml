@@ -69,7 +69,7 @@
         android:id="@+id/Button"
         android:layout_width="375dp"
         android:layout_height="27dp"
-        android:layout_weight="0.27"
+        android:layout_weight="0.32"
         android:text="Exit Individual Report" />
 
 </LinearLayout>

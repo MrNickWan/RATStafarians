@@ -27,21 +27,32 @@ public class ListActivity extends AppCompatActivity {
 
     private ListView ratReportsList; // ListView of RatReports
     private List<RatReport> list = new ArrayList<>(); // A list of the reports
-    private Button button;
-
+    private Button logOutButton;
+    private Button addReportButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.logout);
-        button.setOnClickListener(new View.OnClickListener() {
+        logOutButton = (Button) findViewById(R.id.logout);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListActivity.this, FirstScreenActivity.class);
                 startActivity(intent);
             }
         });
+        addReportButton = (Button) findViewById(R.id.addReport);
+        addReportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListActivity.this, AddRatReportActivity.class);
+                intent.putExtra("lastUniqueKey", list.get(list.size() - 1).getUniqueKey());
+                startActivity(intent);
+            }
+        });
+
+
         // Don;t ask me what this following three lines do, I don't know
         LinearLayoutManager mManager = new LinearLayoutManager(this);
         mManager.setReverseLayout(true);
