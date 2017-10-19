@@ -38,7 +38,7 @@ public class AddRatReportActivity extends AppCompatActivity{
     private Spinner borough1;
     private Button submitButton;
     private Activity act;
-    RatReport report = new RatReport();
+    RatReport report;
 
     private RatReport newReport = new RatReport();
 
@@ -60,7 +60,7 @@ public class AddRatReportActivity extends AppCompatActivity{
             public void onClick(View view) {
                 //Place all values entered by user into newReport
                 newReport.setLocationType(locType.getSelectedItem().toString());
-                String zipCode = zipcode.toString();
+                String zipCode = zipcode.getText().toString();
                 zipCode = zipCode.replaceAll("\\s+","");
                 newReport.setIncidentZip(zipCode);
                 //Set up fields for next page for user to enter information
@@ -74,26 +74,14 @@ public class AddRatReportActivity extends AppCompatActivity{
                 submitButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        newReport.setIncidentAddress(address.toString());
-                        newReport.setCity(city.toString());
+                        newReport.setIncidentAddress(address.getText().toString());
+                        newReport.setCity(city.getText().toString());
                         newReport.setBorough(borough1.getSelectedItem().toString());
                         Date date = Calendar.getInstance().getTime();
-
-                        final Query ratQuery = FirebaseDatabase.getInstance().getReference().child("pr").
-                                child("ratData").orderByKey().limitToLast(1);
-
-                        ratQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                report = dataSnapshot.getValue(RatReport.class);
-                            }
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                // ...
-                            }
-                        });
-                        
-                        newReport.setUniqueKey("" + (report.getUniqueKey() + 1));
+                        Integer uniqueKey =  newReport.getUniqueKeyCounter() + 1;
+                        newReport.setUniqueKeyCounter(newReport.getUniqueKeyCounter() + 1);
+                        newReport.setUniqueKey(uniqueKey.toString());
+                        newReport.setCreatedDate(date.toString());
                         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
                         mDatabase.child("qa").child("ratData").child(newReport.getUniqueKey()).setValue(newReport);

@@ -18,6 +18,7 @@ public class RatReport {
     private String borough;
     private String latitude;
     private String longitude;
+    private static int uniqueKeyCounter;
 
 
     /**
@@ -127,5 +128,13 @@ public class RatReport {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public int getUniqueKeyCounter() {
+        return uniqueKeyCounter;
+    }
+
+    public void setUniqueKeyCounter(int uniqueKey) {
+        this.uniqueKeyCounter = uniqueKey;
     }
 }

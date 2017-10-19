@@ -68,6 +68,10 @@ public class ListActivity extends AppCompatActivity {
                 for (DataSnapshot reportSnap : dataSnapshot.getChildren()) {
                     RatReport report = reportSnap.getValue(RatReport.class);
                     list.add(report); // adds the report to the list
+                    int reportKey = Integer.valueOf(report.getUniqueKey().trim());
+                    if (reportKey > report.getUniqueKeyCounter()) {
+                        report.setUniqueKeyCounter(reportKey);
+                    }
                 }
                 RatAdapter adapter = new RatAdapter(ListActivity.this, list);
                 ratReportsList.setAdapter(adapter); // sets the ListView to display this

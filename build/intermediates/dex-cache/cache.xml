@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/home/robert/HW2340/M7/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_900f78bf4624fd68430782bc4c8dbf4dd4d3c044/classes.dex" />
+        <dex dex="/home/robert/HW2340/M7/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_2ef06da9cfd47fe1e65a8712720c78fedf8906a2/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/home/robert/HW2340/M7/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="ef9e0fc5fa9839d0a06b58242e9190808e0517e6">
-        <dex dex="/home/robert/AndroidStudioProjects/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9a3f236c811d1cdafc802c3bb54643b3aa385146/classes.dex" />
+        sha1="d26f43f82e8f88fa8b496f03f0cae8ef50609328">
+        <dex dex="/home/robert/HW2340/M7/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6103e9ef26b12650a27816a8eb2b4b663b866d0b/classes.dex" />
     </item>
 
 </items>
