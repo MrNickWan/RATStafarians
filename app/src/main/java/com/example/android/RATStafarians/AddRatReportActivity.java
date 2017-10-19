@@ -92,7 +92,7 @@ public class AddRatReportActivity extends AppCompatActivity{
                                 // ...
                             }
                         });
-                        System.out.println(report.getUniqueKey() + " " + "ROFLCOPTER");
+                        
                         newReport.setUniqueKey("" + (report.getUniqueKey() + 1));
                         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
