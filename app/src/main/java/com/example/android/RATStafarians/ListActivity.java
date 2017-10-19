@@ -42,16 +42,6 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        addReportButton = (Button) findViewById(R.id.addReport);
-        addReportButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ListActivity.this, AddRatReportActivity.class);
-                intent.putExtra("lastUniqueKey", list.get(list.size() - 1).getUniqueKey());
-                startActivity(intent);
-            }
-        });
-
 
         // Don;t ask me what this following three lines do, I don't know
         LinearLayoutManager mManager = new LinearLayoutManager(this);
@@ -89,6 +79,21 @@ public class ListActivity extends AppCompatActivity {
 
             }
         });
+
+
+        addReportButton = (Button) findViewById(R.id.addReport);
+        addReportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListActivity.this, AddRatReportActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
         ratReportsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long rowID) {

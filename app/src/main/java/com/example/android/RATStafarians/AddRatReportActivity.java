@@ -1,6 +1,8 @@
 package com.example.android.RATStafarians;
 
-import android.app.Activity;
+import android.app.*;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
@@ -12,10 +14,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
 import java.util.Date;
+
 
 /**
  * Created by helen.wan on 10/16/2017.
@@ -30,9 +38,9 @@ public class AddRatReportActivity extends AppCompatActivity{
     private Spinner borough1;
     private Button submitButton;
     private Activity act;
+    RatReport report = new RatReport();
 
     private RatReport newReport = new RatReport();
-    DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss a");
 
 
 
@@ -59,7 +67,6 @@ public class AddRatReportActivity extends AppCompatActivity{
                 setContentView(R.layout.add_rat_report_2);
                 address = (EditText) findViewById(R.id.address);
                 city = (EditText) findViewById(R.id.city);
-                System.out.println(findViewById(R.id.borough));
                 borough1 = (Spinner) findViewById(R.id.borough);
                 borough1.setAdapter(new ArrayAdapter<BoroughType>
                         (act, android.R.layout.simple_spinner_dropdown_item, BoroughType.values()));
@@ -70,11 +77,28 @@ public class AddRatReportActivity extends AppCompatActivity{
                         newReport.setIncidentAddress(address.toString());
                         newReport.setCity(city.toString());
                         newReport.setBorough(borough1.getSelectedItem().toString());
-                        Date dateobj = new Date();
-                        String date = df.format(dateobj);
-                        newReport.setCreatedDate(date);
-                        int lastUniqueKey = getIntent().getExtras().getInt("lastUniqueKey");
-                        newReport.setUniqueKey("" + (lastUniqueKey + 1));
+                        Date date = Calendar.getInstance().getTime();
+
+                        final Query ratQuery = FirebaseDatabase.getInstance().getReference().child("pr").
+                                child("ratData").orderByKey().limitToLast(1);
+
+                        ratQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                report = dataSnapshot.getValue(RatReport.class);
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                // ...
+                            }
+                        });
+                        System.out.println(report.getUniqueKey() + " " + "ROFLCOPTER");
+                        newReport.setUniqueKey("" + (report.getUniqueKey() + 1));
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                        mDatabase.child("qa").child("ratData").child(newReport.getUniqueKey()).setValue(newReport);
+
+                        finish();
                     }
                 });
             }
