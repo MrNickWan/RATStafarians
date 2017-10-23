@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/locLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.11"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Location Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <Spinner
+                android:id="@+id/locType"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.13" />
+
+            <TextView
+                android:id="@+id/zipCodeLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.11"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Zip Code"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <EditText
+                android:id="@+id/zipCode"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.11"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/addressLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.10"
+                android:text="Address"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.10"
+                android:ems="10"
+                android:inputType="textPersonName|textPostalAddress" />
+
+            <TextView
+                android:id="@+id/cityLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.10"
+                android:text="City"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.10"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/boroughLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.10"
+                android:text="Borough"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <Spinner
+                android:id="@+id/borough"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.10" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.10"
+                android:text="Submit" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
