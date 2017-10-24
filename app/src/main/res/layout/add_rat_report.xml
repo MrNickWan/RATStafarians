@@ -100,6 +100,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.10"
                 android:text="Submit" />
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.11"
+                android:text="cancel" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -1,7 +1,7 @@
 package com.example.android.RATStafarians;
 
 /**
- * Created by helen.wan on 10/16/2017.
+ * This is an enum class for boroughs
  */
 
 public enum BoroughType {

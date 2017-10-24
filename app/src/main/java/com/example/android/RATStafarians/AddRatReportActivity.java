@@ -1,6 +1,8 @@
 package com.example.android.RATStafarians;
 
 import android.app.*;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -21,20 +23,24 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * The activity class is for creating and adding rat reports to the Firebase database. It also
+ * makes sure the rat report persist in the database.
+ */
 public class AddRatReportActivity extends AppCompatActivity{
     private Spinner locType;
     private TextView zipCode;
-    private Button continueButton;
     private TextView address;
     private TextView city;
     private Spinner borough1;
     private Button submitButton;
+    private Button cancelButton;
     private Activity act;
     String zipCodeStr = null;
 
     private RatReport newReport = new RatReport();
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         act = this;
@@ -49,14 +55,19 @@ public class AddRatReportActivity extends AppCompatActivity{
         //Place all values entered by user into newReport
         newReport.setLocationType(locType.getSelectedItem().toString());
 
-        //Set up fields for next page for user to enter information3
+        //Set up fields for user to enter information
         address = findViewById(R.id.address);
         city = findViewById(R.id.city);
+
         borough1 = findViewById(R.id.borough);
+
+        //Set borough adapter for the enum values of the borough
         borough1.setAdapter(new ArrayAdapter<>(act, android.R.layout.
                 simple_spinner_dropdown_item, BoroughType.values()));
 
         submitButton = findViewById(R.id.submit);
+        cancelButton = findViewById(R.id.cancel);
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,14 +84,30 @@ public class AddRatReportActivity extends AppCompatActivity{
                 newReport.setCreatedDate(date.toString());
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
+                //Puts the new rat report into the database
                 mDatabase.child("qa").child("ratData").child(newReport.getUniqueKey()).setValue(newReport);
 
                 finish();
             }
         });
 
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                finish();
+                }
+            }
+        );
+
+
     }
 
+    /**
+     * The method takes in the zip code the user types in and sets the longitude and latitude, and
+     * if the zip code is not valid, it sets up to the default values
+     * @param zipCode the zip code input for the method
+     */
     protected void setGeoLocation(String zipCode) {
         try {
             Geocoder geocoder = new Geocoder(this);
