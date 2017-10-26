@@ -29,6 +29,7 @@ public class ListActivity extends AppCompatActivity {
     private List<RatReport> list = new ArrayList<>(); // A list of the reports
     private Button logOutButton;
     private Button addReportButton;
+    private Button mapButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        // Don;t ask me what this following three lines do, I don't know
+        // Don't ask me what this following three lines do, I don't know
         LinearLayoutManager mManager = new LinearLayoutManager(this);
         mManager.setReverseLayout(true);
         mManager.setStackFromEnd(true);
@@ -85,7 +86,7 @@ public class ListActivity extends AppCompatActivity {
         });
 
 
-        addReportButton = (Button) findViewById(R.id.addReport);
+        addReportButton = findViewById(R.id.addReport);
         addReportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +96,14 @@ public class ListActivity extends AppCompatActivity {
         });
 
 
-
+        mapButton = findViewById(R.id.mapButton);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListActivity.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         ratReportsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
