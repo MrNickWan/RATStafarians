@@ -27,6 +27,7 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".FirstScreenActivity" />
         <activity android:name=".AddRatReportActivity" />
+        <activity android:name=".MainActivity"/>
         <activity android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <!--

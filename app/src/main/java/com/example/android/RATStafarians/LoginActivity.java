@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Login Successful!",Toast.LENGTH_SHORT).show();
                             progress.dismiss();
 
-                            Intent loginPassIntent = new Intent(LoginActivity.this, ListActivity.class);
+                            Intent loginPassIntent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(loginPassIntent);
                         } else {
                             Toast.makeText(LoginActivity.this, "Login Failed!",Toast.LENGTH_SHORT).show();

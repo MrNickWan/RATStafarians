@@ -2,13 +2,15 @@ package com.example.android.RATStafarians;
 
 import android.os.Bundle;
 
+import java.io.Serializable;
+
 /**
  * Created by robert on 10/7/17.
  *
  * Basically, this is a model class for putting in RatReports and exists as an information holder
  */
 
-public class RatReport {
+public class RatReport implements Serializable{
     private String uniqueKey;
     private String createdDate;
     private String locationType;
@@ -33,7 +35,7 @@ public class RatReport {
      * @param lat the latitude of the incident place
      * @param longitude the longitude of the incident place
      */
-    public RatReport(String key, String date,
+    private RatReport(String key, String date,
                       String location, String zipCode,
                       String address, String city,
                       String neighborhood, String lat, String longitude) {
@@ -51,58 +53,58 @@ public class RatReport {
     /**
      * The default constructor of the RatReports class
      */
-    public RatReport() {
+    RatReport() {
         this("420691337", "04/20/69", "your basement", "42069", "butthole",
                 "straightouttacompton", "comptonbro", "69.420", "69.69");
     }
 
-    public String getUniqueKey() {
+    String getUniqueKey() {
         return uniqueKey;
     }
 
-    public void setUniqueKey(String uniqueKey) {
+    void setUniqueKey(String uniqueKey) {
         this.uniqueKey = uniqueKey;
     }
 
-    public String getCreatedDate() {
+    String getCreatedDate() {
 
         return createdDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
-    public String getLocationType() {
+    String getLocationType() {
         return locationType;
     }
 
-    public void setLocationType(String locationType) {
+    void setLocationType(String locationType) {
         this.locationType = locationType;
     }
 
-    public String getIncidentAddress() {
+    String getIncidentAddress() {
         return incidentAddress;
     }
 
-    public void setIncidentAddress(String incidentAddress) {
+    void setIncidentAddress(String incidentAddress) {
         this.incidentAddress = incidentAddress;
     }
 
-    public String getIncidentZip() {
+    String getIncidentZip() {
 
         return incidentZip;
     }
 
-    public void setIncidentZip(String incidentZip) {
+    void setIncidentZip(String incidentZip) {
         this.incidentZip = incidentZip;
     }
 
-    public String getCity() {
+    String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    void setCity(String city) {
         this.city = city;
     }
 
@@ -110,31 +112,31 @@ public class RatReport {
         return borough;
     }
 
-    public void setBorough(String borough) {
+    void setBorough(String borough) {
         this.borough = borough;
     }
 
-    public String getLatitude() {
+    String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public int getUniqueKeyCounter() {
+    int getUniqueKeyCounter() {
         return uniqueKeyCounter;
     }
 
-    public void setUniqueKeyCounter(int uniqueKey) {
-        this.uniqueKeyCounter = uniqueKey;
+    void setUniqueKeyCounter(int uniqueKey) {
+        uniqueKeyCounter = uniqueKey;
     }
 }

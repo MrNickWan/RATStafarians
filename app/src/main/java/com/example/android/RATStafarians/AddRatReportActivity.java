@@ -19,9 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * The activity class is for creating and adding rat reports to the Firebase database. It also
@@ -71,17 +73,22 @@ public class AddRatReportActivity extends AppCompatActivity{
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a",
+                        Locale.US);
+
                 zipCodeStr = zipCode.getText().toString();
                 newReport.setIncidentZip(zipCodeStr);
-                setGeoLocation(zipCodeStr);
+                String longLat = address.getText().toString() + zipCodeStr;
+                setGeoLocation(longLat);
                 newReport.setIncidentAddress(address.getText().toString());
                 newReport.setCity(city.getText().toString());
                 newReport.setBorough(borough1.getSelectedItem().toString());
                 Date date = Calendar.getInstance().getTime();
+                String dateStr = sdf.format(date);
                 Integer uniqueKey =  newReport.getUniqueKeyCounter() + 1;
                 newReport.setUniqueKeyCounter(newReport.getUniqueKeyCounter() + 1);
                 newReport.setUniqueKey(uniqueKey.toString());
-                newReport.setCreatedDate(date.toString());
+                newReport.setCreatedDate(dateStr);
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
                 //Puts the new rat report into the database
@@ -106,12 +113,12 @@ public class AddRatReportActivity extends AppCompatActivity{
     /**
      * The method takes in the zip code the user types in and sets the longitude and latitude, and
      * if the zip code is not valid, it sets up to the default values
-     * @param zipCode the zip code input for the method
+     * @param geoLocation the zip code input for the method
      */
-    protected void setGeoLocation(String zipCode) {
+    protected void setGeoLocation(String geoLocation) {
         try {
             Geocoder geocoder = new Geocoder(this);
-            List<Address> addresses = geocoder.getFromLocationName(zipCode, 1);
+            List<Address> addresses = geocoder.getFromLocationName(geoLocation, 1);
             if (addresses != null && !addresses.isEmpty()) {
                 Address address = addresses.get(0);
                 // Use the address as needed

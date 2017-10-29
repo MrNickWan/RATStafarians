@@ -27,20 +27,19 @@ public class ListActivity extends AppCompatActivity {
 
     private ListView ratReportsList; // ListView of RatReports
     private List<RatReport> list = new ArrayList<>(); // A list of the reports
-    private Button logOutButton;
+    private Button returnButton;
     private Button addReportButton;
     private Button mapButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list);
 
-        logOutButton = (Button) findViewById(R.id.logout);
-        logOutButton.setOnClickListener(new View.OnClickListener() {
+        returnButton = findViewById(R.id.Return);
+        returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ListActivity.this, FirstScreenActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -49,7 +48,7 @@ public class ListActivity extends AppCompatActivity {
         mManager.setReverseLayout(true);
         mManager.setStackFromEnd(true);
 
-        // Under activity_main.xml, this a ratListings ListView UI
+        // Under activity_list.xml, this a ratListings ListView UI
         ratReportsList = findViewById(R.id.ratListings);
 
         /*
@@ -57,7 +56,7 @@ public class ListActivity extends AppCompatActivity {
            how many reports you want. Also, you should set the database to the Firebase using
            the tool kit on the IDE toolbar under Tools, Firebase
           */
-        final Query ratQuery = FirebaseDatabase.getInstance().getReference().child("qa").
+        Query ratQuery = FirebaseDatabase.getInstance().getReference().child("qa").
                 child("ratData").orderByKey().limitToLast(50);
 
         // Basically listens whenever data changes on the Database and gives back a query
@@ -94,17 +93,6 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        mapButton = findViewById(R.id.mapButton);
-        mapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ListActivity.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         ratReportsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
