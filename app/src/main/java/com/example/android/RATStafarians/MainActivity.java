@@ -22,12 +22,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 
 /**
- * Created by robert on 10/28/17.
+ * The main activity the application runs after logging in. It prompts you to select dates
+ * for the MapsActivity and loads the query using the confirm dates button. Also, allows you to
+ * go view the list and go back to the login screen.
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SimpleDateFormat dateFormat;
     private ArrayList<RatReport> list;
     private Button confirmDates;
+    private Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceData) {
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         datePicker = new DatePickerFragment();
 
+        logout = findViewById(R.id.logout);
         startButton = findViewById(R.id.beg_date);
         endButton = findViewById(R.id.end_date);
 
@@ -66,33 +69,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mapButton.setOnClickListener(this);
         listButton.setOnClickListener(this);
         confirmDates.setOnClickListener(this);
+        logout.setOnClickListener(this);
 
         dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a",
                 Locale.US);
     }
 
+    /**
+     * The onClick method directs and controls the activity functions for the different
+     * buttons on the screen.
+     * @param v
+     */
     public void onClick(View v) {
         int id = v.getId();
-        if (id == startButton.getId()) {
-            datePicker.setFlag(0);
+        if (id == startButton.getId()) { // if user clicks start date button
+            datePicker.setFlag(0); // sets the flag to start date
             datePicker.show(getSupportFragmentManager(), "datePicker");
-        } else if (id == endButton.getId()) {
-            datePicker.setFlag(1);
+        } else if (id == endButton.getId()) { // if user clicks end date button
+            datePicker.setFlag(1); // sets the flag to end date
             datePicker.show(getSupportFragmentManager(), "datePicker");
-        } else if (id == mapButton.getId()) {
+        } else if (id == mapButton.getId()) { // if user clicks the map button
             Intent mapIntent = new Intent(MainActivity.this, MapsActivity.class);
-            mapIntent.putExtra("listQuery", list);
+            mapIntent.putExtra("listQuery", list); // puts the list queried into next activity
             startActivity(mapIntent);
-        } else if (id == listButton.getId()) {
+        } else if (id == listButton.getId()) { // if user clicks list button
             Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
             startActivity(listIntent);
         } else if (id == confirmDates.getId()) {
-            queryForMap();
+            queryForMap(); // calls queryForMap to query the rat report list into the list
             startDate.setText(dateFormat.format(startDateObj));
             endDate.setText(dateFormat.format(endDateObj));
+        } else if (id == logout.getId()) {
+            Intent returnInt = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(returnInt);
         }
     }
 
+    /**
+     * Private method to query and load the list for MapsActivity
+     */
     private void queryForMap() {
 
         final Query markerQuery = FirebaseDatabase.getInstance().getReference().child("qa")
@@ -106,10 +121,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 for (DataSnapshot reportSnap : dataSnapshot.getChildren()) {
                     RatReport report = reportSnap.getValue(RatReport.class);
                     try {
-                        String date = report.getCreatedDate();
-                        Date reportDate = dateFormat.parse(date);
+                        String date = report.getCreatedDate(); // Gets the date
+                        Date reportDate = dateFormat.parse(date); // Parse the date into Date obj
                         if (reportDate.after(startDateObj) && reportDate.before(endDateObj)) {
-                            list.add(report);
+                            list.add(report); // if before end date and after start date add to list
                         }
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -126,6 +141,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    /**
+     * @inheritDoc
+     */
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
@@ -150,15 +168,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             flag = i;
         }
 
+        @Override
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
             Calendar calendar = Calendar.getInstance();
-            calendar.set(year,month,day);
-            Date date =  calendar.getTime();
+            calendar.set(year,month,day); // sets the highlighted date to current time
+            Date date =  calendar.getTime(); // gets the new selected date
             if (flag == FLAG_START_DATE) {
-                startDateObj = date;
+                startDateObj = date; // if start date then point startDateObj to this
             } else if (flag == FLAG_END_DATE) {
-                endDateObj = date;
+                endDateObj = date; // if end date then point endDateObj to this
             }
         }
     }

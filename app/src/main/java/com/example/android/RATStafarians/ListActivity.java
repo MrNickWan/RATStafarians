@@ -39,7 +39,8 @@ public class ListActivity extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent returnInt = new Intent(ListActivity.this, MainActivity.class);
+                startActivity(returnInt);
             }
         });
 

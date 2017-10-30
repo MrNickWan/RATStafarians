@@ -29,13 +29,12 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * The activity that displays the Google Map
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private Date startDate;
-    private Date endDate;
-    private SimpleDateFormat dateFormatter;
-    private Calendar calendar;
     private List<RatReport> list;
 
     @Override
@@ -70,15 +69,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         Geocoder geocoder = new Geocoder(this);
-        LatLng newYorkLatLng = new LatLng(0,0);
+        LatLng newYorkLatLng = new LatLng(0,0); // adds a LatLng for New York
 
-        // Add a marker in Sydney and move the camera
+        // Adding the markers to the map
         for (RatReport report : list) {
             LatLng reportLatLng = null;
 
+            // If Latitude and Longitude are empty string, then use the address for LatLng
             if (report.getLatitude().length() == 0 ||
                     report.getLongitude().length() == 0) {
                 try {
+                    // Gets location using address and zip
                     String location = report.getIncidentAddress() + report.getIncidentZip();
                     List<Address> addresses = geocoder.getFromLocationName(location, 1);
                     reportLatLng = new LatLng(
@@ -90,11 +91,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .show();
                 }
             } else {
+                // Parse the Longitude and Latitude for LatLng
                 reportLatLng = new LatLng(
                         Double.parseDouble(report.getLatitude()),
                         Double.parseDouble(report.getLongitude())
                 );
             }
+            // Adds the marker for map
             if (reportLatLng != null) {
                 mMap.addMarker(new MarkerOptions().position(reportLatLng).
                         title(report.getUniqueKey()));
@@ -108,7 +111,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText(this, "I am showing (0,0) instead of New York",
                     Toast.LENGTH_LONG).show();
         }
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(newYorkLatLng));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(newYorkLatLng)); // moves the camera to New York
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(10)); // zooms the camera
     }
 }
