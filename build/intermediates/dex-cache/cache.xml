@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/jacklafiandra/Desktop/stuff/Rat try 100000/RATStafarians/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/jacklafiandra/Desktop/stuff/Rat try 100000/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_8313b35bcfae9fbd9623db6de7fce5a5c3b166d9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jacklafiandra/Desktop/stuff/Rat try 100000/RATStafarians/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="64520bac87005c8f630375f300da5f2301065f92">
+        <dex dex="/Users/jacklafiandra/Desktop/stuff/Rat try 100000/RATStafarians/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_5fd84617a59dfece99416f01669fedaccb322451/classes.dex" />
+    </item>
+
+</items>

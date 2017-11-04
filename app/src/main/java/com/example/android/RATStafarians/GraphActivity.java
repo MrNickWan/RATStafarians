@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.github.mikephil.charting.data.Entry;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.HashMap;
 import java.util.List;
 
 import java.io.IOException;
@@ -45,14 +46,28 @@ public class GraphActivity extends AppCompatActivity {
         }
 
         List<Entry> entries = new ArrayList<Entry>();
-
+        int month;
+        int date;
+        HashMap<Integer, Integer> hasher = new HashMap<Integer, Integer>();
+        
         for (RatReport x : list) {
 
             // turn your data into Entry objects
-            entries.add(new Entry(Integer.parseInt(x.getCreatedDate().substring(0,2)), 1));
+            date = Integer.parseInt(x.getCreatedDate().substring(6,10) + x.getCreatedDate().substring(0,2)); //month
+            if(hasher.get(date) == null){
+                hasher.put(date,0);
+            }
+
+            hasher.put(date,hasher.get(date) + 1);
         }
 
-        LineDataSet dataSet = new LineDataSet(entries, "Label");
+        for (int data : hasher.keySet()) {
+
+            // turn your data into Entry objects
+            entries.add(new Entry(data, hasher.get(data)));
+        }
+
+        LineDataSet dataSet = new LineDataSet(entries, "X:Month/Year Y:Rat Reports in that Month/Year");
 
         LineData lineData = new LineData(dataSet);
         chart.setData(lineData);
