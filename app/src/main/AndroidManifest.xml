@@ -27,9 +27,12 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".FirstScreenActivity" />
         <activity android:name=".AddRatReportActivity" />
+        <activity android:name=".GraphActivity"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".MapsActivity"
+
             android:label="@string/title_activity_maps"></activity>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private DatePickerFragment datePicker;
     private Button listButton;
     private Button mapButton;
+    private Button graphButton;
     private SimpleDateFormat dateFormat;
     private ArrayList<RatReport> list;
     private Button confirmDates;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startDate = findViewById(R.id.beg_date_view);
         endDate = findViewById(R.id.end_date_view);
         listButton = findViewById(R.id.list_button);
+        graphButton = findViewById(R.id.graph_button);
         mapButton = findViewById(R.id.map_button);
         confirmDates = findViewById(R.id.confirm_dates);
 
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         endButton.setOnClickListener(this);
         mapButton.setOnClickListener(this);
         listButton.setOnClickListener(this);
+        graphButton.setOnClickListener(this);
         confirmDates.setOnClickListener(this);
         logout.setOnClickListener(this);
 
@@ -92,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent mapIntent = new Intent(MainActivity.this, MapsActivity.class);
             mapIntent.putExtra("listQuery", list); // puts the list queried into next activity
             startActivity(mapIntent);
+        } else if (id == graphButton.getId()) { // if user clicks the map button
+            Intent graphIntent = new Intent(MainActivity.this, GraphActivity.class);
+            graphIntent.putExtra("listQuery", list); // puts the list queried into next activity
+            startActivity(graphIntent);
         } else if (id == listButton.getId()) { // if user clicks list button
             Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
             startActivity(listIntent);
