@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -27,7 +29,7 @@ import java.lang.Integer.*;
  */
 
 public class GraphActivity extends AppCompatActivity {
-    private List<RatReport> list;
+    static Model model;
     private LineChart chart;
 
     @Override
@@ -35,22 +37,14 @@ public class GraphActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
-        chart = (LineChart) findViewById(R.id.chart);
-
-        Bundle bundle = getIntent().getExtras();
-        try {
-            list = (ArrayList<RatReport>) bundle.getSerializable("listQuery");
-        } catch (ClassCastException e) {
-            Toast.makeText(this, "Empty list for makrkers", Toast.LENGTH_LONG)
-                    .show();
-        }
+        model = Model.get();
+        chart = findViewById(R.id.chart);
 
         List<Entry> entries = new ArrayList<Entry>();
-        int month;
         int date;
-        HashMap<Integer, Integer> hasher = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> hasher = new HashMap<>();
         
-        for (RatReport x : list) {
+        for (RatReport x : model.list) {
 
             // turn your data into Entry objects
             date = Integer.parseInt(x.getCreatedDate().substring(6,10) + x.getCreatedDate().substring(0,2)); //month

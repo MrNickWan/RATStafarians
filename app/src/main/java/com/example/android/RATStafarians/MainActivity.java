@@ -3,13 +3,16 @@ package com.example.android.RATStafarians;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,15 +46,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mapButton;
     private Button graphButton;
     private SimpleDateFormat dateFormat;
-    private ArrayList<RatReport> list;
     private Button confirmDates;
     private Button logout;
+    static Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceData) {
         super.onCreate(savedInstanceData);
         setContentView(R.layout.activity_main);
-        list = new ArrayList<>();
+        model = Model.get();
+        model.list = new ArrayList<>();
 
         startDate = findViewById(R.id.beg_date_view);
         endDate = findViewById(R.id.end_date_view);
@@ -93,11 +97,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             datePicker.show(getSupportFragmentManager(), "datePicker");
         } else if (id == mapButton.getId()) { // if user clicks the map button
             Intent mapIntent = new Intent(MainActivity.this, MapsActivity.class);
-            mapIntent.putExtra("listQuery", list); // puts the list queried into next activity
             startActivity(mapIntent);
         } else if (id == graphButton.getId()) { // if user clicks the map button
             Intent graphIntent = new Intent(MainActivity.this, GraphActivity.class);
-            graphIntent.putExtra("listQuery", list); // puts the list queried into next activity
             startActivity(graphIntent);
         } else if (id == listButton.getId()) { // if user clicks list button
             Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
@@ -117,13 +119,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void queryForMap() {
 
-        final Query markerQuery = FirebaseDatabase.getInstance().getReference().child("qa")
-                .child("ratData");
+        final Query markerQuery = FirebaseDatabase.getInstance().getReference().child("pr")
+                .child("ratData").limitToLast(5000);
 
         markerQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                list.clear(); // clears so that duplicates won't happen
+                model.list.clear(); // clears so that duplicates won't happen
 
                 for (DataSnapshot reportSnap : dataSnapshot.getChildren()) {
                     RatReport report = reportSnap.getValue(RatReport.class);
@@ -131,13 +133,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         String date = report.getCreatedDate(); // Gets the date
                         Date reportDate = dateFormat.parse(date); // Parse the date into Date obj
                         if (reportDate.after(startDateObj) && reportDate.before(endDateObj)) {
-                            list.add(report); // if before end date and after start date add to list
+                            model.list.add(report); // if before end date and after start date add to list
                         }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
-
+                confirmDates.setText("Finished Querying");
             }
 
             // Haven't thought of what we need for this yet, so this is just here and empty
@@ -188,6 +190,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
-
 
 }
