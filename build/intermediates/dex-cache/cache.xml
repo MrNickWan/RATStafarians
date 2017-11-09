@@ -3,6 +3,15 @@
 
     <item
         is-multidex="true"
+        jar="/home/robert/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/5d4eb08a326bdbd7fbbddc769666898c9936b282/MPAndroidChart-v3.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5d4eb08a326bdbd7fbbddc769666898c9936b282">
+        <dex dex="/home/robert/HW2340/M9/app/build/intermediates/transforms/dex/debug/folders/1000/10/MPAndroidChart-v3.0.2_7d8552c9b5817bd9eac664486081e7caef497945/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/robert/HW2340/M9/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -16,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="1c758017a78a162e776234d5a78f2deb946fe4ac">
+        sha1="d5a354cc737ac891afc9eb7b17a50974c8240127">
         <dex dex="/home/robert/HW2340/M9/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_755ce910443991a357e47be0df5665e394d39fd4/classes.dex" />
     </item>
 

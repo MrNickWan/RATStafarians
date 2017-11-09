@@ -3,23 +3,18 @@ package com.example.android.RATStafarians;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -120,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void queryForMap() {
 
         final Query markerQuery = FirebaseDatabase.getInstance().getReference().child("pr")
-                .child("ratData").limitToLast(5000);
+                .child("ratData").limitToLast(30000); // 30000 is a reasonable amount to get right now
 
         markerQuery.addValueEventListener(new ValueEventListener() {
             @Override

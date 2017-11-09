@@ -57,7 +57,7 @@ public class ListActivity extends AppCompatActivity {
            how many reports you want. Also, you should set the database to the Firebase using
            the tool kit on the IDE toolbar under Tools, Firebase
           */
-        Query ratQuery = FirebaseDatabase.getInstance().getReference().child("qa").
+        Query ratQuery = FirebaseDatabase.getInstance().getReference().child("pr").
                 child("ratData").orderByKey().limitToLast(50);
 
         // Basically listens whenever data changes on the Database and gives back a query
