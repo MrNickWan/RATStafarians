@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".FirstScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,11 +25,14 @@
         </activity>
         <activity android:name=".ListActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".FirstScreenActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".AddRatReportActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".GraphActivity"/>
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".MapsActivity"
+
             android:label="@string/title_activity_maps"></activity>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

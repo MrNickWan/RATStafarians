@@ -23,24 +23,17 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private List<RatReport> list;
+    static Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        model = Model.get(); // Gets the model singleton.
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        Bundle bundle = getIntent().getExtras();
-        try {
-            list = (ArrayList<RatReport>) bundle.getSerializable("listQuery");
-        } catch (ClassCastException e) {
-            Toast.makeText(this, "Empty list for makrkers", Toast.LENGTH_LONG)
-                    .show();
-        }
     }
 
 
@@ -57,12 +50,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         Geocoder geocoder = new Geocoder(this);
-        LatLng newYorkLatLng = new LatLng(0,0); // adds a LatLng for New York
+        LatLng newYorkLatLng;
 
         // Adding the markers to the map
-        for (RatReport report : list) {
+        int i = 0;
+        while (i < 300 && i < model.list.size()) {
             LatLng reportLatLng = null;
-
+            RatReport report = model.list.get(i++);
             // If Latitude and Longitude are empty string, then use the address for LatLng
             if (report.getLatitude().length() == 0 ||
                     report.getLongitude().length() == 0) {
@@ -76,7 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     );
                 } catch (IOException e) {
                     Toast.makeText(this, "Tossing this one out", Toast.LENGTH_LONG)
-                        .show();
+                            .show();
                 }
             } else {
                 // Parse the Longitude and Latitude for LatLng
@@ -91,14 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         title(report.getUniqueKey()));
             }
         }
-        try {
-            List<Address> addressesNY = geocoder.getFromLocationName("New York", 1);
-            newYorkLatLng = new LatLng(addressesNY.get(0).getLatitude(),
-                    addressesNY.get(0).getLongitude());
-        } catch (IOException e) {
-            Toast.makeText(this, "I am showing (0,0) instead of New York",
-                    Toast.LENGTH_LONG).show();
-        }
+        newYorkLatLng = new LatLng(40.730610, -73.935242);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(newYorkLatLng)); // moves the camera to New York
         mMap.moveCamera(CameraUpdateFactory.zoomTo(10)); // zooms the camera
     }

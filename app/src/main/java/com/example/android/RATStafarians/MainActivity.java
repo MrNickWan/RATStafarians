@@ -11,13 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,20 +40,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private DatePickerFragment datePicker;
     private Button listButton;
     private Button mapButton;
+    private Button graphButton;
     private SimpleDateFormat dateFormat;
-    private ArrayList<RatReport> list;
     private Button confirmDates;
     private Button logout;
+    static Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceData) {
         super.onCreate(savedInstanceData);
         setContentView(R.layout.activity_main);
-        list = new ArrayList<>();
+        model = Model.get();
+        model.list = new ArrayList<>();
 
         startDate = findViewById(R.id.beg_date_view);
         endDate = findViewById(R.id.end_date_view);
         listButton = findViewById(R.id.list_button);
+        graphButton = findViewById(R.id.graph_button);
         mapButton = findViewById(R.id.map_button);
         confirmDates = findViewById(R.id.confirm_dates);
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         endButton.setOnClickListener(this);
         mapButton.setOnClickListener(this);
         listButton.setOnClickListener(this);
+        graphButton.setOnClickListener(this);
         confirmDates.setOnClickListener(this);
         logout.setOnClickListener(this);
 
@@ -91,8 +93,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             datePicker.show(getSupportFragmentManager(), "datePicker");
         } else if (id == mapButton.getId()) { // if user clicks the map button
             Intent mapIntent = new Intent(MainActivity.this, MapsActivity.class);
-            mapIntent.putExtra("listQuery", list); // puts the list queried into next activity
             startActivity(mapIntent);
+        } else if (id == graphButton.getId()) { // if user clicks the map button
+            Intent graphIntent = new Intent(MainActivity.this, GraphActivity.class);
+            startActivity(graphIntent);
         } else if (id == listButton.getId()) { // if user clicks list button
             Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
             startActivity(listIntent);
@@ -111,13 +115,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void queryForMap() {
 
-        final Query markerQuery = FirebaseDatabase.getInstance().getReference().child("qa")
-                .child("ratData");
+        final Query markerQuery = FirebaseDatabase.getInstance().getReference().child("pr")
+                .child("ratData").limitToLast(30000); // 30000 is a reasonable amount to get right now
 
         markerQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                list.clear(); // clears so that duplicates won't happen
+                model.list.clear(); // clears so that duplicates won't happen
 
                 for (DataSnapshot reportSnap : dataSnapshot.getChildren()) {
                     RatReport report = reportSnap.getValue(RatReport.class);
@@ -125,13 +129,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         String date = report != null ? report.getCreatedDate() : null; // Gets the date
                         Date reportDate = dateFormat.parse(date); // Parse the date into Date obj
                         if (reportDate.after(startDateObj) && reportDate.before(endDateObj)) {
-                            list.add(report); // if before end date and after start date add to list
+                            model.list.add(report); // if before end date and after start date add to list
                         }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
-
+                confirmDates.setText("Finished Querying");
             }
 
             // Haven't thought of what we need for this yet, so this is just here and empty
@@ -183,6 +187,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
-
 
 }
