@@ -1,8 +1,6 @@
 package com.example.android.RATStafarians;
 
-/**
- * Created by helen.wan on 10/16/2017.
- */
+
 
 public enum LocationType {
     FAMILYDWELLING ("Family Dwelling"), FAMILYAPTBUILDING ("Family Apt. Building"),

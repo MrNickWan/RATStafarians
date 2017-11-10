@@ -35,14 +35,15 @@ public class LoginActivity extends AppCompatActivity {
 
         progress = new ProgressDialog(this);
 
-        Email = (EditText) findViewById(R.id.userInput);
-        Password = (EditText) findViewById(R.id.passInput);
-        Login = (Button) findViewById(R.id.button);
-        Cancel = (Button) findViewById(R.id.cancelLogin);
+        Email = findViewById(R.id.userInput);
+        Password = findViewById(R.id.passInput);
+        Login = findViewById(R.id.button);
+        Cancel = findViewById(R.id.cancelLogin);
         fAuth = FirebaseAuth.getInstance();
 
         if(fAuth.getCurrentUser() != null) {
-            Intent hereInt = new Intent(LoginActivity.this, ListActivity.class);
+            Intent hereIntent = new Intent(LoginActivity.this, ListActivity.class);
+            startActivity(hereIntent);
         }
 
         Login.setOnClickListener(new View.OnClickListener() {

@@ -43,23 +43,23 @@ public class RegistrationActivity extends AppCompatActivity {
         progress = new ProgressDialog(this);
         fAuth = FirebaseAuth.getInstance();
 
-        newEmail = (EditText) findViewById(R.id.entEmail);
-        newPassword = (EditText) findViewById(R.id.entPassword);
+        newEmail = findViewById(R.id.entEmail);
+        newPassword = findViewById(R.id.entPassword);
 
-        clickRegister = (Button) findViewById(R.id.entRegister);
-        clickCancel = (Button) findViewById(R.id.entCancel);
+        clickRegister = findViewById(R.id.entRegister);
+        clickCancel = findViewById(R.id.entCancel);
 
-        showAdminKeyText = (TextView) findViewById(R.id.entRegister);
-        newAdminKey= (EditText) findViewById(R.id.entAdminKey);
+        showAdminKeyText = findViewById(R.id.entRegister);
+        newAdminKey= findViewById(R.id.entAdminKey);
 
-        List<String> spinnerArray =  new ArrayList<String>();
+        List<String> spinnerArray = new ArrayList<>();
         spinnerArray.add("User");
         spinnerArray.add("Admin");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        userAdminSpinner = (Spinner) findViewById(R.id.typeSpin);
+        userAdminSpinner = findViewById(R.id.typeSpin);
         userAdminSpinner.setAdapter(adapter);
 
         clickRegister.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +105,6 @@ public class RegistrationActivity extends AppCompatActivity {
         //&& newAdminKey.getText().toString().trim() != adminKey
         //
         boolean adminResult = newAdminKey.getText().toString().trim().equals(adminKey);
-        boolean userResult = newAdminKey.getText().toString().trim().equals("");
         if (selected.equals("Admin")) {
             if (adminResult) {
                 Toast.makeText(RegistrationActivity.this, "Admin Entered, Correct Admin Key", Toast.LENGTH_SHORT).show();

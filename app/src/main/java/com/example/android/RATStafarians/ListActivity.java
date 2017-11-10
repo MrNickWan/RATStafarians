@@ -69,8 +69,9 @@ public class ListActivity extends AppCompatActivity {
                 for (DataSnapshot reportSnap : dataSnapshot.getChildren()) {
                     RatReport report = reportSnap.getValue(RatReport.class);
                     list.add(report); // adds the report to the list
-                    int reportKey = Integer.valueOf(report.getUniqueKey().trim());
-                    if (reportKey > report.getUniqueKeyCounter()) {
+                    int reportKey = Integer.valueOf(report != null ? report.getUniqueKey().trim() : null);
+                    if (reportKey > (report != null ? report.getUniqueKeyCounter() : 0)) {
+                        assert report != null;
                         report.setUniqueKeyCounter(reportKey);
                     }
                 }
@@ -121,7 +122,7 @@ public class ListActivity extends AppCompatActivity {
                 TextView longitude = findViewById(R.id.longitude);
                 longitude.setText(report.getLongitude());
 
-                Button button = (Button) findViewById(R.id.Button);
+                Button button = findViewById(R.id.Button);
 
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override

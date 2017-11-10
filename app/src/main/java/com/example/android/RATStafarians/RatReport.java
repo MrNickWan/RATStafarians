@@ -1,7 +1,5 @@
 package com.example.android.RATStafarians;
 
-import android.os.Bundle;
-
 import java.io.Serializable;
 
 /**

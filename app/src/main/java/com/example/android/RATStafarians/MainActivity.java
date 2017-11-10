@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * The onClick method directs and controls the activity functions for the different
      * buttons on the screen.
-     * @param v
+     * @param v The current view
      */
     public void onClick(View v) {
         int id = v.getId();
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 for (DataSnapshot reportSnap : dataSnapshot.getChildren()) {
                     RatReport report = reportSnap.getValue(RatReport.class);
                     try {
-                        String date = report.getCreatedDate(); // Gets the date
+                        String date = report != null ? report.getCreatedDate() : null; // Gets the date
                         Date reportDate = dateFormat.parse(date); // Parse the date into Date obj
                         if (reportDate.after(startDateObj) && reportDate.before(endDateObj)) {
                             list.add(report); // if before end date and after start date add to list
@@ -152,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         private int flag;
 
+        @NonNull
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current date as the default date in the picker

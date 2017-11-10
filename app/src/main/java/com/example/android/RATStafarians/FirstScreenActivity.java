@@ -18,8 +18,8 @@ public class FirstScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_screen);
-        PickLogin = (Button) findViewById(R.id.loginButton);
-        PickReg = (Button) findViewById(R.id.regButton);
+        PickLogin = findViewById(R.id.loginButton);
+        PickReg = findViewById(R.id.regButton);
 
         PickLogin.setOnClickListener(new View.OnClickListener() {
             @Override
