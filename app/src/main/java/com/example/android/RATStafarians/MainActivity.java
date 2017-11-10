@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SimpleDateFormat dateFormat;
     private Button confirmDates;
     private Button logout;
-    static Model model;
+    private static Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceData) {

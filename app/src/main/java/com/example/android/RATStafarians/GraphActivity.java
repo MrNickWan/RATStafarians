@@ -24,9 +24,8 @@ import java.util.Locale;
  */
 
 public class GraphActivity extends AppCompatActivity {
-    static Model model; // Singleton of model
-    private LineChart chart; // The chart
-    SimpleDateFormat dateFormat; // Date formatter for the x axis and handling
+    private static Model model; // Singleton of model
+    private SimpleDateFormat dateFormat; // Date formatter for the x axis and handling
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,7 @@ public class GraphActivity extends AppCompatActivity {
         dateFormat = new SimpleDateFormat("yyyy/MM", Locale.US);
 
         model = Model.get();
-        chart = findViewById(R.id.chart);
+        LineChart chart = findViewById(R.id.chart);
 
         List<Entry> entries = new ArrayList<>();
         HashMap<Date, Integer> hasher = new HashMap<>();
@@ -80,7 +79,7 @@ public class GraphActivity extends AppCompatActivity {
     /**
      * The Formatter for the x axis of the chart
      */
-    public class DateValueFormatter implements IAxisValueFormatter {
+    private class DateValueFormatter implements IAxisValueFormatter {
 
         @Override
         public String getFormattedValue(float value, AxisBase axis) {

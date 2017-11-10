@@ -16,9 +16,9 @@ import java.util.List;
  * Basically, this class is another Model class for adapting the data and use it for the listview
  */
 
-public class RatAdapter extends ArrayAdapter<RatReport> {
+class RatAdapter extends ArrayAdapter<RatReport> {
     private Activity context;
-    List<RatReport> reports;
+    private List<RatReport> reports;
 
     /**
      * The constructor for the RatAdapter class

@@ -8,7 +8,7 @@ public enum BoroughType {
     MANHATTAN ("Manhattan"), STATENISLAND ("Staten Island"),
     QUEENS ("Queen"), BROOKLYN ("Brooklyn"), BRONX ("Bronx");
 
-    private String name;
+    private final String name;
 
     BoroughType(String name) {
         this.name = name;

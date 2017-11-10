@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private ProgressDialog progress;
     private EditText Email, Password;
-    private Button Login, Cancel;
     private FirebaseAuth fAuth;
 
     @Override
@@ -37,8 +36,8 @@ public class LoginActivity extends AppCompatActivity {
 
         Email = findViewById(R.id.userInput);
         Password = findViewById(R.id.passInput);
-        Login = findViewById(R.id.button);
-        Cancel = findViewById(R.id.cancelLogin);
+        Button login = findViewById(R.id.button);
+        Button cancel = findViewById(R.id.cancelLogin);
         fAuth = FirebaseAuth.getInstance();
 
         if(fAuth.getCurrentUser() != null) {
@@ -46,13 +45,13 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(hereIntent);
         }
 
-        Login.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validate(Email.getText().toString(), Password.getText().toString());
             }
         });
-        Cancel.setOnClickListener(new View.OnClickListener() {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent cancelIntent = new Intent(LoginActivity.this, FirstScreenActivity.class);

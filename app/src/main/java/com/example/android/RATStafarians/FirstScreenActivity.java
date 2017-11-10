@@ -12,16 +12,14 @@ import android.content.Intent;
  */
 public class FirstScreenActivity extends AppCompatActivity {
 
-    private Button PickLogin, PickReg;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_screen);
-        PickLogin = findViewById(R.id.loginButton);
-        PickReg = findViewById(R.id.regButton);
+        Button pickLogin = findViewById(R.id.loginButton);
+        Button pickReg = findViewById(R.id.regButton);
 
-        PickLogin.setOnClickListener(new View.OnClickListener() {
+        pickLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent loginIntent = new Intent(FirstScreenActivity.this, LoginActivity.class);
@@ -29,7 +27,7 @@ public class FirstScreenActivity extends AppCompatActivity {
             }
         });
 
-        PickReg.setOnClickListener(new View.OnClickListener() {
+        pickReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent loginIntent = new Intent(FirstScreenActivity.this, RegistrationActivity.class);

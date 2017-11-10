@@ -27,24 +27,20 @@ import java.util.Locale;
  * makes sure the rat report persist in the database.
  */
 public class AddRatReportActivity extends AppCompatActivity{
-    private Spinner locType;
     private TextView zipCode;
     private TextView address;
     private TextView city;
     private Spinner borough1;
-    private Button submitButton;
-    private Button cancelButton;
-    private Activity act;
-    String zipCodeStr = null;
+    private String zipCodeStr = null;
 
     private RatReport newReport = new RatReport();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        act = this;
+        Activity act = this;
         setContentView(R.layout.add_rat_report);
-        locType = findViewById(R.id.locType);
+        Spinner locType = findViewById(R.id.locType);
 
         Geocoder geocoder = new Geocoder(this);
         locType.setAdapter(new ArrayAdapter<>
@@ -64,8 +60,8 @@ public class AddRatReportActivity extends AppCompatActivity{
         borough1.setAdapter(new ArrayAdapter<>(act, android.R.layout.
                 simple_spinner_dropdown_item, BoroughType.values()));
 
-        submitButton = findViewById(R.id.submit);
-        cancelButton = findViewById(R.id.cancel);
+        Button submitButton = findViewById(R.id.submit);
+        Button cancelButton = findViewById(R.id.cancel);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +108,7 @@ public class AddRatReportActivity extends AppCompatActivity{
      * if the zip code is not valid, it sets up to the default values
      * @param geoLocation the zip code input for the method
      */
-    protected void setGeoLocation(String geoLocation) {
+    private void setGeoLocation(String geoLocation) {
         try {
             Geocoder geocoder = new Geocoder(this);
             List<Address> addresses = geocoder.getFromLocationName(geoLocation, 1);

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Basically, this is a model class for putting in RatReports and exists as an information holder
  */
 
-public class RatReport implements Serializable{
+class RatReport implements Serializable{
     private String uniqueKey;
     private String createdDate;
     private String locationType;

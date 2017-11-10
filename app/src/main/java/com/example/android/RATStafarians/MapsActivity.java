@@ -14,7 +14,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,8 +21,7 @@ import java.util.List;
  */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-    static Model model;
+    private static Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
         Geocoder geocoder = new Geocoder(this);
         LatLng newYorkLatLng;
 
@@ -81,12 +78,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
             // Adds the marker for map
             if (reportLatLng != null) {
-                mMap.addMarker(new MarkerOptions().position(reportLatLng).
+                googleMap.addMarker(new MarkerOptions().position(reportLatLng).
                         title(report.getUniqueKey()));
             }
         }
         newYorkLatLng = new LatLng(40.730610, -73.935242);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(newYorkLatLng)); // moves the camera to New York
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(10)); // zooms the camera
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(newYorkLatLng)); // moves the camera to New York
+        googleMap.moveCamera(CameraUpdateFactory.zoomTo(10)); // zooms the camera
     }
 }

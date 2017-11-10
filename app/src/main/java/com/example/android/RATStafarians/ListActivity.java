@@ -27,15 +27,13 @@ public class ListActivity extends AppCompatActivity {
 
     private ListView ratReportsList; // ListView of RatReports
     private List<RatReport> list = new ArrayList<>(); // A list of the reports
-    private Button returnButton;
-    private Button addReportButton;
-    private Button mapButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        returnButton = findViewById(R.id.Return);
+        Button returnButton = findViewById(R.id.Return);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +85,7 @@ public class ListActivity extends AppCompatActivity {
         });
 
 
-        addReportButton = findViewById(R.id.addReport);
+        Button addReportButton = findViewById(R.id.addReport);
         addReportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

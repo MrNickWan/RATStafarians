@@ -28,13 +28,10 @@ import java.util.List;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
-    private Button clickRegister, clickCancel;
-    private TextView showAdminKeyText;
     private EditText  newEmail, newPassword,newAdminKey;
     private ProgressDialog progress;
     private Spinner userAdminSpinner;
     private FirebaseAuth fAuth;
-    private final String adminKey = "ADMIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +43,10 @@ public class RegistrationActivity extends AppCompatActivity {
         newEmail = findViewById(R.id.entEmail);
         newPassword = findViewById(R.id.entPassword);
 
-        clickRegister = findViewById(R.id.entRegister);
-        clickCancel = findViewById(R.id.entCancel);
+        Button clickRegister = findViewById(R.id.entRegister);
+        Button clickCancel = findViewById(R.id.entCancel);
 
-        showAdminKeyText = findViewById(R.id.entRegister);
+        TextView showAdminKeyText = findViewById(R.id.entRegister);
         newAdminKey= findViewById(R.id.entAdminKey);
 
         List<String> spinnerArray = new ArrayList<>();
@@ -104,6 +101,7 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         //&& newAdminKey.getText().toString().trim() != adminKey
         //
+        String adminKey = "ADMIN";
         boolean adminResult = newAdminKey.getText().toString().trim().equals(adminKey);
         if (selected.equals("Admin")) {
             if (adminResult) {
