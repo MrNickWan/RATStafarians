@@ -24,7 +24,6 @@ import java.util.Locale;
  */
 
 public class GraphActivity extends AppCompatActivity {
-    private static Model model; // Singleton of model
     private SimpleDateFormat dateFormat; // Date formatter for the x axis and handling
 
     @Override
@@ -33,7 +32,7 @@ public class GraphActivity extends AppCompatActivity {
         setContentView(R.layout.activity_graph);
         dateFormat = new SimpleDateFormat("yyyy/MM", Locale.US);
 
-        model = Model.get();
+        Model model = Model.get();
         LineChart chart = findViewById(R.id.chart);
 
         List<Entry> entries = new ArrayList<>();
@@ -60,7 +59,7 @@ public class GraphActivity extends AppCompatActivity {
         Collections.sort(xLabelList); // Sorts the dates into an order
         for (Date data : xLabelList) {
             // turn your data into Entry objects of float values to make sure graph in continuous.
-            entries.add(new Entry(new Long(data.getTime()).floatValue(), hasher.get(data)));
+            entries.add(new Entry(Long.valueOf(data.getTime()).floatValue(), hasher.get(data)));
         }
 
         LineDataSet dataSet = new LineDataSet(entries, "X:Month/Year Y:Rat Reports in that Month/Year");
@@ -84,7 +83,7 @@ public class GraphActivity extends AppCompatActivity {
         @Override
         public String getFormattedValue(float value, AxisBase axis) {
             // Returns the float value into a date format of yyyy/MM
-            return dateFormat.format(new Date(new Float(value).longValue()));
+            return dateFormat.format(new Date(Float.valueOf(value).longValue()));
         }
         // ...
     }

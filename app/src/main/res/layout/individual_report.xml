@@ -6,64 +6,58 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <EditText
+    <TextView
         android:id="@+id/key"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:labelFor="@+id/date"/>
 
-    <EditText
+    <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName|datetime|date" />
+        />
 
-    <EditText
+    <TextView
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:layout_weight="0.30" />
 
-    <EditText
+    <TextView
         android:id="@+id/locationType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:ems="10" />
 
-    <EditText
+    <TextView
         android:id="@+id/latLabel"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="none"
         android:text="Latitude" />
 
-    <EditText
+    <TextView
         android:id="@+id/lat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:ems="10" />
 
-    <EditText
+    <TextView
         android:id="@+id/longLabel"
         android:layout_width="92dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text="Longitude" />
 
-    <EditText
+    <TextView
         android:id="@+id/longitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:ems="10" />
 
     <Button
         android:id="@+id/Button"

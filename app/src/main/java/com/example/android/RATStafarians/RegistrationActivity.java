@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ProgressDialog;
 
@@ -46,7 +45,7 @@ public class RegistrationActivity extends AppCompatActivity {
         Button clickRegister = findViewById(R.id.entRegister);
         Button clickCancel = findViewById(R.id.entCancel);
 
-        TextView showAdminKeyText = findViewById(R.id.entRegister);
+
         newAdminKey= findViewById(R.id.entAdminKey);
 
         List<String> spinnerArray = new ArrayList<>();
